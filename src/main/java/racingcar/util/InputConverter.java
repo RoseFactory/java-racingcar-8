@@ -11,6 +11,14 @@ public class InputConverter {
         String input = Console.readLine();
 
         List<String> nameList = Arrays.asList(input.split(","));
+
+        nameList.stream()
+            .filter(n -> n.length() > 5)
+            .findAny()
+            .ifPresent(n -> {
+                throw new IllegalArgumentException();
+            });
+
         return nameList.stream()
                        .map(Car::new)
                        .toList();
