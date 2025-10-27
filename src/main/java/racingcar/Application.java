@@ -3,6 +3,7 @@ package racingcar;
 import java.util.List;
 import racingcar.util.InputConverter;
 import racingcar.util.MovementDecider;
+import racingcar.util.RaceFormatter;
 
 public class Application {
     public static void main(String[] args) {
@@ -10,10 +11,11 @@ public class Application {
         int endTime = InputConverter.getInt();
 
         MovementDecider movementDecider = new MovementDecider();
+        RaceFormatter raceFormatter = new RaceFormatter("-");
 
-        Race race = new Race(movementDecider, endTime, carsInRace);
+        Race race = new Race(movementDecider, raceFormatter, endTime, carsInRace);
         race.play();
 
-        race.printWinners();
+        System.out.println(raceFormatter.formatWinnerResult(race.getWinners()));
     }
 }
