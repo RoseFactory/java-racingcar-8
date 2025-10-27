@@ -6,7 +6,7 @@ public class Car {
     private int position = 0;
 
     public void goForward() {
-
+        position++;
     }
 
     public String getName() {
