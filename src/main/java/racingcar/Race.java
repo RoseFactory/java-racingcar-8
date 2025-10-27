@@ -52,7 +52,7 @@ public class Race {
                                           .map(Car::getName)
                                           .toList();
 
-        System.out.println("최종 우승자 : " + Strings.join(winnerNames));
+        System.out.println("최종 우승자 : " + String.join(", ", winnerNames));
     }
 
     private List<Car> getWinners() {
