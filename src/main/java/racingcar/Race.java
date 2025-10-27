@@ -29,13 +29,9 @@ public class Race {
     }
 
     private void proceed() {
-        for(Car car : cars) {
-            boolean canGoForward = movementDecider.shouldGoForward();
-
-            if(canGoForward) {
-                car.goForward();
-            }
-        }
+        cars.stream()
+            .filter(c -> movementDecider.shouldGoForward())
+            .forEach(Car::goForward);
 
         printCurrentStatus();
     }
