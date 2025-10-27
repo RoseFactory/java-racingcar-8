@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import org.assertj.core.util.Strings;
 import racingcar.util.MovementDecider;
 
 public class Race {
@@ -46,10 +47,22 @@ public class Race {
     }
 
     public void printWinners() {
-        
+        List<Car> winners = getWinners();
+        List<String> winnerNames = winners.stream()
+                                          .map(Car::getName)
+                                          .toList();
+
+        System.out.println("최종 우승자 : " + Strings.join(winnerNames));
     }
 
     private List<Car> getWinners() {
-        return null;
+        int maxPosition = cars.stream()
+                              .mapToInt(Car::getPosition)
+                              .max()
+                              .orElseThrow();
+
+        return cars.stream()
+                   .filter(c -> c.getPosition() == maxPosition)
+                   .toList();
     }
 }
