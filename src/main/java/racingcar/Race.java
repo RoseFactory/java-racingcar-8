@@ -7,6 +7,8 @@ public class Race {
 
     private final MovementDecider movementDecider;
 
+    private final static String POSITION_INDICATOR = "-";
+
     private final int endTime;
     private int currentTime = 0;
     private final List<Car> cars;
@@ -39,11 +41,16 @@ public class Race {
     }
 
     private void printCurrentStatus() {
+        for (Car car : cars) {
+            String name = car.getName();
+            int position = car.getPosition();
 
+            System.out.println(name + " : " + POSITION_INDICATOR.repeat(position));
+        }
     }
 
     public void printWinners() {
-
+        
     }
 
     private List<Car> getWinners() {
