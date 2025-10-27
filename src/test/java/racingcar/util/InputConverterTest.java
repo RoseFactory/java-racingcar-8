@@ -14,10 +14,9 @@ class InputConverterTest {
     void 정상_차이름() {
         // given
         String input = "pobi,woni,jun";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         // when
-        List<Car> cars = InputConverter.parseCarNames();
+        List<Car> cars = InputConverter.parseCarNames(input);
 
         // then
         List<String> carNames = cars.stream()
@@ -30,10 +29,9 @@ class InputConverterTest {
     void 다섯글자_초과_차이름_예외_발생() {
         // given
         String input = "pobi,javajigi";
-        System.setIn(new ByteArrayInputStream(input.getBytes()));
 
         // when, then
-        assertThatThrownBy(InputConverter::parseCarNames)
+        assertThatThrownBy(() -> InputConverter.parseCarNames(input))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }

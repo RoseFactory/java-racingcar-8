@@ -1,5 +1,6 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import racingcar.util.InputConverter;
 import racingcar.util.MovementDecider;
@@ -7,8 +8,10 @@ import racingcar.util.RaceFormatter;
 
 public class Application {
     public static void main(String[] args) {
-        List<Car> carsInRace = InputConverter.parseCarNames();
-        int endTime = InputConverter.getInt();
+        String nameInput = Console.readLine();
+        List<Car> carsInRace = InputConverter.parseCarNames(nameInput);
+        String endTimeInput = Console.readLine();
+        int endTime = InputConverter.parseEndTime(endTimeInput);
 
         MovementDecider movementDecider = new MovementDecider();
         RaceFormatter raceFormatter = new RaceFormatter("-");

@@ -1,15 +1,12 @@
 package racingcar.util;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.Car;
 
 public class InputConverter {
 
-    public static List<Car> parseCarNames() {
-        String input = Console.readLine();
-
+    public static List<Car> parseCarNames(String input) {
         List<String> nameList = Arrays.asList(input.split(","));
 
         nameList.stream()
@@ -24,9 +21,7 @@ public class InputConverter {
                        .toList();
     }
 
-    public static int getInt() {
-        String input = Console.readLine();
-
+    public static int parseEndTime(String input) {
         return Integer.parseInt(input);
     }
 }
